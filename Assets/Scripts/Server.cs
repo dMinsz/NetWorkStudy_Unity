@@ -73,9 +73,14 @@ public class Server : MonoBehaviour
 
         connectedClients = new List<TcpClient>();
         disConnectedClients = new List<TcpClient>();
-
         try
         {
+
+            if (IPPort.text == "")
+            {
+                IPPort.text = "7778";
+            }
+
             listener = new TcpListener(IPAddress.Any, int.Parse(IPPort.text));
             listener.Start();
 

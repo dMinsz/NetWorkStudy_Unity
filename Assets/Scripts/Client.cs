@@ -50,6 +50,18 @@ public class Client : MonoBehaviour
         try
         {
 
+
+            if (IPInput.text == "")
+            {
+                IPInput.text = "127.0.0.1";
+            }
+
+            if (IPPort.text == "")
+            {
+                IPPort.text = "7778";
+            }
+
+
             tcpClient = new TcpClient(IPInput.text.ToString(), int.Parse(IPPort.text)); // 127.0.0.1 은 루프백 즉 자기자신이다.
             stream = tcpClient.GetStream();
             writer = new StreamWriter(stream);
@@ -65,7 +77,9 @@ public class Client : MonoBehaviour
             Debug.LogError("TCP Connect Fail : " + e.Message);
             DisconnectedFromServer();
         }
-   
+
+
+        SendChat(" 두둥등장!");
 
 
     }
@@ -96,7 +110,7 @@ public class Client : MonoBehaviour
 
         try
         {
-            clientName = nickname.text == "" ? "name" : nickname.text;
+            clientName = nickname.text == "" ? "NoName" : nickname.text;
 
             writer.WriteLine(string.Format("{0} : {1}", clientName, message));
             writer.Flush();
