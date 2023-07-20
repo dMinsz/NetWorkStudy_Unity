@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class Chat : MonoBehaviour
 {
+    public Client client;
     public static Chat instance { get; private set; }
 
     public InputField inputField;
+    //public InputField nickname;
     public RectTransform ChatContent;
     public Text ChatText;
     public ScrollRect ChatScrollRect;
@@ -15,7 +17,7 @@ public class Chat : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        inputField.onSubmit.AddListener(AddMessage);
+        inputField.onSubmit.AddListener(str => client.SendChat(str));
     }
 
     public void AddMessage(string data)
