@@ -14,3 +14,8 @@ IF you Want Test
 You need to turn off your firewall OR need to Firewall Setup
 
 ![img](./ChatReadmeImage/ChatStudy.png)
+
+0. Firewall Setup
+1. Server Open (IP, Port Setup) Only one Client
+2. Client Connect
+3. Chat
